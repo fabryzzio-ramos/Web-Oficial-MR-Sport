@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Web Oficial de MR Sport</title>
+    <meta name="description" content="MR Sport - Noticias, jugadores destacados, calendario de partidos y novedades deportivas.">
+    <meta name="keywords" content="MR Sport, fútbol, deportes, jugadores, calendario, noticias">
+    <meta name="author" content="Fabryzzio">
+    
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- CSS-->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="nav-firts">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo de MR Sport">
+            <div class="texto">
+                <span class="nombre">CLUB DE <br>FÚTBOL <br>MR SPORT</span>
+            </div>
+        </div>
+        <div class="nav-second-container">
+            <ul class="social-icons">
+                <li class="social-facebook background-social">
+                    <a title="Siguenos en Facebook" href="https://www.facebook.com/people/Club-Deportivo-San-Marcos/61556221790255/?mibextid=ZbWKwL" target="_blank">
+                        <img src="img/icon-facebook-white.webp" alt="Logo blanco de Facebook"></a>
+                </li>
+                <li class="social-instagram background-social">
+                    <a title="Siguenos en Instagram" href="https://www.instagram.com/deportivo.sanmarcos?utm_source=ig_web_button_share_sheet&igsh=ZnBkdGJkYWdqdHZs" target="_blank">
+                        <img src="img/icon-instagram-white.webp" alt="Logo blanco de instagram"></a>
+                </li>
+                <li class="social-tiktok background-social">
+                    <a title="Siguenos en TikTok" href="#" target="_blank">
+                        <img src="img/icon-tiktok-white.webp" alt="Logo blanco de tiktok"></a>
+                </li>
+                <li class="social-whatsapp background-social">
+                    <a title="Contactanos en Whatsapp" href="https://wa.link/b0b8cp" target="_blank">
+                        <img src="img/icon-whatsapp-white.webp" alt="Logo blanco de whatsapp"></a>
+                </li>
+                <li class="social-phone">
+                    <img src="img/icon-phone-white.webp" alt="icon-phone" width="18px">
+                    +51 924 527 190
+                </li>
+            </ul>
+            <!-- Botón hamburguesa (visible solo en móviles) -->
+            
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menú de navegación -->
+            <nav class="nav-second" id="nav-menu">
+                <a href="#noticias" class="contenido">
+                    <img src="img/icon-noticias.webp" alt="Logo de noticias" width="20px">
+                    <span>Noticias</span>
+                </a>
+                <a href="#jugadores" class="contenido">
+                    <img src="img/icon-plantel.webp" alt="Logo de plantel" width="20px">
+                    <span>Plantel</span>
+                </a>
+                <a href="#calendario" class="contenido">
+                    <img src="img/icon-calendario-white.webp" alt="Logo de calendario" width="20px">
+                    <span>Calendario</span>
+                </a>
+                <a href="" class="contenido">
+                    <img src="img/icon-tienda.webp" alt="Logo de tienda" width="20px">
+                    <span>Tienda</span>
+                </a>
+                <a href="#redes" class="contenido">
+                    <img src="img/icon-contacto.webp" alt="Logo de contacto" width="20px">
+                    <span>Redes</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="todo">
+        <section class="portada" id="portada">
+            <h1>¡Bienvenidos a la página oficial!</h1>
+            <p>Vive la pasión del Club MR Sport</p>
+            <button class="btn">Ver Proximo Partido</button>
+        </section>
+        
+        <section class="noticias" id="noticias">
+            <h2 class="noticias-h2">Últimas Noticias</h2>
+            <p>Mantente al día con los artículos y anuncios más recientes sobre el equipo y el fútbol mundial.</p>
+            <!-- Cards de noticias -->
+            <div class="cards">
+                <div class="card-contenedor" id="card-1">
+                    <header class="header-img">
+                        <img src="img/noticia-entrenamiento.webp" alt="Entrenamieto de MR Sport">
+                    </header>
+                    <footer class="footer-contenido">
+                        <h3 class="Titulo">Nuevo refuerzo</h3>
+                        <span>El club anuncia la incorporacion de un nuevo delantero para reforzar el plantel</span>
+                    </footer>
+                </div>
+                <div class="card-contenedor" id="card-2">
+                    <header class="header-img">
+                        <img src="img/noticia-victoria.webp" alt="Victoria de MR Sport">
+                    </header>
+                    <footer class="footer-contenido">
+                        <h3 class="Titulo">Victoria en casa</h3>
+                        <span>MR Sport logro un triunfo por un gol en el encuentro frente a Universitario</span>
+                    </footer>
+                </div>
+                <div class="card-contenedor" id="card-3">
+                    <header class="header-img">
+                        <img src="img/noticia-proximo-rival.webp" alt="Proximo rival de MR Sport">
+                    </header>
+                    <footer class="footer-contenido">
+                        <h3 class="Titulo">Próximo partido</h3>
+                        <span>MR Sport se enfrentara a la seleccion española este domingo en el estadio Camp Nou</span>
+                    </footer>
+                </div>
+            </div>
+        </section>
+        
+        <section class="jugadores" id="jugadores">
+            <h2 class="jugadores-destacados">Jugadores destacados</h2>
+            <!-- Cards de jugadores -->
+            <div class="cards-container">
+                <div class="card">
+                    <img src="img/jugador-messi.webp" alt="Jugador destacado Messi" class="player-img">
+                    <div class="card-info">
+                        <div class="number">
+                            <span>10</span>
+                        </div>
+                        <div class="info">
+                            <span>Messi</span>
+                            <span>Mediocampista</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/jugador-neymar.webp" alt="Jugador destacado Neymar" class="player-img">
+                    <div class="card-info">
+                        <div class="number">
+                            <span>11</span>
+                        </div>
+                        <div class="info">
+                            <span>Neymar</span>
+                            <span>Extremo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/jugador-yamal.webp" alt="Jugador destacado Yamal" class="player-img">
+                    <div class="card-info">
+                        <div class="number">
+                            <span>19</span>
+                        </div>
+                        <div class="info">
+                            <span>Lamine Yamal</span>
+                            <span>Extremo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="img/jugador-rashford.webp" alt="Jugador destacado Rashford" class="player-img">
+                    <div class="card-info">
+                        <div class="number">
+                            <span>20</span>
+                        </div>
+                        <div class="info">
+                            <span>Rashford</span>
+                            <span>Delantero</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="calendario" id="calendario">
+            <h2 class="calendario-h2">Próximos partidos</h2>
+            <!-- Partidos -->
+            <div class="partidos-container">
+                <div class="partido-card">
+                    <header class="superior">
+                        <div class="rival">
+                            <img src="img/logo-levante.webp" alt="Logo rival" width="30px">
+                            <span>Levante</span>
+                        </div>
+                        <img src="img/logo-champions-league.webp" alt="Champions league" class="copa">
+                        <div class="local">
+                            <img src="img/logo.png" alt="Logo MR Sport" width="30px">
+                            <span>MR Sport</span>
+                        </div>
+                    </header>
+                    <footer class="info-calendario">
+                        <h5>Fútbol - Primer Equipo</h6>
+                        <div class="jornada">
+                            <h3>La Liga</h3>
+                            <span>Jornada 1</span>
+                        </div>
+                        <div class="fecha">
+                            <div class="hora">
+                                <img src="img/icon-calendario.webp" alt="Logo de fecha">
+                                <span>Martes, 23 sept, 21:30h</span>
+                            </div>
+                            <div class="lugar">
+                                <img src="img/icon-ubicacion.webp" alt="Logo de ubicacion">
+                                <span>Estadio Ciudad de Valencia</span>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                <div class="partido-card">
+                    <header class="superior">
+                        <div class="rival">
+                            <img src="img/logo-levante.webp" alt="Logo rival" width="30px">
+                            <span>Levante</span>
+                        </div>
+                        <img src="img/logo-champions-league.webp" alt="Champions league" class="copa">
+                        <div class="local">
+                            <img src="img/logo.png" alt="Logo MR Sport" width="30px">
+                            <span>MR Sport</span>
+                        </div>
+                    </header>
+                    <footer class="info-calendario">
+                        <h5>Fútbol - Primer Equipo</h6>
+                        <div class="jornada">
+                            <h3>La Liga</h3>
+                            <span>Jornada 1</span>
+                        </div>
+                        <div class="fecha">
+                            <div class="hora">
+                                <img src="img/icon-calendario.webp" alt="Logo de fecha">
+                                <span>Martes, 23 sept, 21:30h</span>
+                            </div>
+                            <div class="lugar">
+                                <img src="img/icon-ubicacion.webp" alt="Logo de ubicacion">
+                                <span>Estadio Ciudad de Valencia</span>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                <div class="partido-card">
+                    <header class="superior">
+                        <div class="rival">
+                            <img src="img/logo-levante.webp" alt="Logo rival" width="30px">
+                            <span>Levante</span>
+                        </div>
+                        <img src="img/logo-champions-league.webp" alt="Champions league" class="copa">
+                        <div class="local">
+                            <img src="img/logo.png" alt="Logo MR Sport" width="30px">
+                            <span>MR Sport</span>
+                        </div>
+                    </header>
+                    <footer class="info-calendario">
+                        <h5>Fútbol - Primer Equipo</h6>
+                        <div class="jornada">
+                            <h3>La Liga</h3>
+                            <span>Jornada 1</span>
+                        </div>
+                        <div class="fecha">
+                            <div class="hora">
+                                <img src="img/icon-calendario.webp" alt="Logo fecha">
+                                <span>Martes, 23 sept, 21:30h</span>
+                            </div>
+                            <div class="lugar">
+                                <img src="img/icon-ubicacion.webp" alt="Logo ubicacion">
+                                <span>Estadio Ciudad de Valencia</span>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </section>
+        
+        <section class="conocenos">
+            <div class="imagen">
+                <img src="img/conocenos-img.webp" alt="imagen de campo de entrenamieto">
+            </div>
+            <div class="conocenos-contenido">
+                <div class="mision">
+                    <h2>Nuestra misión</h2>
+                    <p>En MR Sport, nuestra misión es formar un equipo competitivo y unido que inspire pasión por el fútbol, promoviendo el respeto, el trabajo en equipo y el espiritu deportivo. Buscamos crecer desde nuestra fundacion en 2023 como un club que fomente el talento, la disciplina y la unión entre jugadores, hinchas y comunidad, dejando huella dentro y fuuera del campo de juego.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="redes" id="redes">
+            <h3 class="redes-h3">Sigue a MR Sport en las redes sociales</h3>
+            <!-- Redes -->
+            <div class="redes-container">
+                <a href="https://www.facebook.com/people/Club-Deportivo-San-Marcos/61556221790255/?mibextid=ZbWKwL" class="rs facebook" target="_blank" >
+                    <header class="rs-logo">
+                        <img src="img/icon-facebook.webp" alt="Logo de facebook">
+                    </header>
+                    <footer class="descripcion">
+                        <span>MR Sport</span>
+                        <span>@mrsport</span>
+                    </footer>
+                </a>
+                <a href="https://www.instagram.com/deportivo.sanmarcos?utm_source=ig_web_button_share_sheet&igsh=ZnBkdGJkYWdqdHZs" class="rs instagram" target="_blank">
+                    <header class="rs-logo">
+                        <img src="img/icon-instagram.webp" alt="Logo de instagram">
+                    </header>
+                    <footer class="descripcion">
+                        <span>MR Sport</span>
+                        <span>@mrsport</span>
+                    </footer>
+                </a>
+                <a href="#" class="rs tiktok" target="_blank">
+                    <header class="rs-logo">
+                        <img src="img/icon-tiktok.webp" alt="Logo de tiktok">
+                    </header>
+                    <footer class="descripcion">
+                        <span>MR Sport</span>
+                        <span>Tik Tok</span>
+                    </footer>
+                </a>
+                <a href="https://wa.link/b0b8cp" class="rs whatsapp" target="_blank">
+                    <header class="rs-logo">
+                        <img src="img/icon-whatsapp.webp" alt="Logo de whatsapp">
+                    </header>
+                    <footer class="descripcion">
+                        <span>MR Sport</span>
+                        <span>Whatsapp</span>
+                    </footer>
+                </a>
+            </div>
+        </section>
+
+        <section class="ubicanos">
+            <div class="escribanos caja">
+                <img src="/img/icon-correo.webp" alt="icon de correo">
+                <h3>Escríbanos</h3>
+                <p>No dude en ponerse en contacto con nosotros por correo electrónico para cualquier consulta, comentario o asistencia. Nos comprometemos a responder con prontitud a todos los mensajes.</p>
+                <a href="mailto:mrsportacademy@gmail.com" target="_blank">mrsportacademy@gmail.com</a>
+            </div>
+            <div class="llamenos caja">
+                <img src="/img/icon-phone-white.webp" alt="icon de telefono">
+                <h3>Llámenos</h3>
+                <p>Nuestro equipo está disponible por teléfono para preguntas rápidas o asistencia. Llámenos al <a href="tel:+51924527190">+51 924 527 190</a> durante el horario comercial.</p>
+            </div>
+            <div class="visitenos caja">
+                <img src="/img/icon-ubicacion-white.webp" alt="icon de ubicacion">
+                <h3>Visítenos</h3>
+                <p>Venga a vernos a nuestra sede en Comas. Damos la bienvenida a los aficionados y visitantes a nuestras instalaciones en la quinta zona de belaunde, Comas.</p>
+            </div>
+        </section>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1149.380643950305!2d-77.0282306210706!3d-11.944059483417965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2spe!4v1759198726934!5m2!1ses-419!2spe" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </main>
+
+    <footer class="copy">
+            <p>&copy; 2025 Club MR Sport - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
