@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
     <!-- CSS-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <header class="nav-firts">
@@ -59,7 +59,7 @@
 
             <!-- Menú de navegación -->
             <nav class="nav-second" id="nav-menu">
-                <a href="#noticias" class="contenido">
+                <a href="/noticias.html" class="contenido">
                     <img src="img/icon-noticias.webp" alt="Logo de noticias" width="20px">
                     <span>Noticias</span>
                 </a>
@@ -91,8 +91,13 @@
         </section>
         
         <section class="noticias" id="noticias">
-            <h2 class="noticias-h2">Últimas Noticias</h2>
-            <p>Mantente al día con los artículos y anuncios más recientes sobre el equipo y el fútbol mundial.</p>
+            <div class="content-noticias">
+                <div class="text">
+                    <h2 class="noticias-h2">Últimas Noticias</h2>
+                    <p>Mantente al día con los artículos y anuncios más recientes sobre el equipo y el fútbol mundial.</p>
+                </div>
+                <button onclick="window.location.href='noticias.html'" class="btn-noticias">Ver más noticias</button>
+            </div>
             <!-- Cards de noticias -->
             <div class="cards">
                 <div class="card-contenedor" id="card-1">
@@ -123,6 +128,7 @@
                     </footer>
                 </div>
             </div>
+            
         </section>
         
         <section class="jugadores" id="jugadores">
@@ -275,6 +281,7 @@
                     </footer>
                 </div>
             </div>
+            <button class="btn-calendario">Ver más partidos</button>
         </section>
         
         <section class="conocenos">
