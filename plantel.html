@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MR Sport | Noticias Deportivas</title>
+    <title>MR Sport | Plantel</title>
 
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
     <!-- CSS-->
-    <link rel="stylesheet" href="/css/noticias.css">
+    <link rel="stylesheet" href="/css/plantel.css">
 </head>
 <body>
     <header class="header">
@@ -52,7 +52,7 @@
                     <img src="img/icon-noticias.webp" alt="Logo de noticias" width="20px">
                     <span>Noticias</span>
                 </a>
-                <a href="/plantel.html" class="contenido">
+                <a href="#jugadores" class="contenido">
                     <img src="img/icon-plantel.webp" alt="Logo de plantel" width="20px">
                     <span>Plantel</span>
                 </a>
@@ -73,19 +73,43 @@
     </header>
 
     <main class="contenedor">
-        <h2 class="titulo-seccion">Últimas Noticias</h2>
+        <h2 class="titulo-seccion">Plantel del Primer Equipo</h2>
+        <nav class="nav">
+            <a href="#porteros">Porteros</a>
+            <a href="#defensores">Defensores</a>
+            <a href="#centrocampistas">Centrocampistas</a>
+            <a href="#delanteros">Delanteros</a>
+            <a href="#cuerpo-tecnico">Cuerpo Técnico</a>
+        </nav>
+        <section class="contenido">
 
-        <div id="noticias" class="grid-noticias"></div>
+            <section id="portero" class="posicion">
+                <h3>Porteros</h3>
+                <div class="grid-jugadores"></div>
+            </section>
 
-        <div class="ver-mas-container">
-            <button id="btnVerMas">Ver más noticias</button>
-        </div>
+            <section id="defensor" class="posicion">
+                <h3>Defensores</h3>
+                <div class="grid-jugadores"></div>
+            </section>
+
+            <section id="centrocampista" class="posicion">
+                <h3>Centrocampistas</h3>
+                <div class="grid-jugadores"></div>
+            </section>
+
+            <section id="delantero" class="posicion">
+                <h3>Delanteros</h3>
+                <div class="grid-jugadores"></div>
+            </section>
+
+            <section id="cuerpo-tecnico" class="posicion">
+                <h3>Cuerpo Técnico</h3>
+                <div class="grid-jugadores"></div>
+            </section>
+
+        </section>
     </main>
-
-    <footer class="copy">
-            <p>&copy; 2025 Club MR Sport - Todos los derechos reservados</p>
-    </footer>
-    
-    <script src="js/noticias.js"></script>
+    <script src="js/plantel.js"></script>
 </body>
 </html>
