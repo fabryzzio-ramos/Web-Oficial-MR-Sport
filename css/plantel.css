@@ -144,6 +144,37 @@ ul{
     width: 50px;
 }
 
+/*HAMBURGUER*/
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 200; /* para que quede encima del menú */
+}
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+/* Estados animados cuando el menú está abierto */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
 /* Contenido */
 .contenedor{
     width: 90%;
@@ -156,6 +187,7 @@ ul{
 }
 /* Botones */
 .nav{
+    margin-bottom: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -361,4 +393,65 @@ ul{
     color: var(--blanco);
     text-align: center;
     padding: 15px;
+}
+
+/* Tablets */
+@media (max-width: 1023px){
+    .header{
+        padding: 10px 50px;
+    }
+}
+
+/* Moviles grandes */
+@media (max-width: 767px){
+    .header{
+        padding: 10px 30px;
+    }
+    .nombre{
+        display: none;
+    }
+    .nav-second{
+        gap: 20px;
+    }
+}
+
+/* Moviles pequeños */
+@media (max-width: 480px){
+    .nav-firts{
+        padding: 10px 30px;
+    }
+    .nombre br:nth-child(1){
+        display: none;
+    }
+    .social-icons{
+        display: none;
+    }
+    .hamburger{
+        display: flex;
+    }
+    .nav-second {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        background-color: var(--rojo-principal);
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 220px;
+        padding: 20px;
+        border-radius: 0 0 0 10px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    .nav-second.show {
+        display: flex;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+    .nav{
+        overflow-x: scroll;
+        justify-content: start;
+    }
+    .redes-container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

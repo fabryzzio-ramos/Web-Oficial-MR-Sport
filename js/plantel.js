@@ -52,3 +52,12 @@ function mostrarPorPosicion(posicion) {
 ["portero", "defensor", "centrocampista", "delantero", "entrenador"].forEach(pos => {
     mostrarPorPosicion(pos);
 });
+
+// Código para el menú hamburguesa
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('show');
+});

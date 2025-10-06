@@ -39,3 +39,13 @@ btnVerMas.addEventListener('click', () => {
 
 // Mostrar las noticias iniciales
 mostrarNoticias();
+
+
+// Código para el menú hamburguesa
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('show');
+});
