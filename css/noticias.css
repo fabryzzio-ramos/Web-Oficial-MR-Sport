@@ -238,6 +238,76 @@ h2 {
         transform: translateY(0);
     }
 }
+
+/*REDES*/
+.redes-h3{
+    display: flex;
+    color: var(--blanco);
+    align-items: center;
+    justify-content: center;
+    margin: 0px 0px 10px;
+}
+.redes{
+    display: flex;
+    background: #333333;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 50px 0;
+}
+.redes-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+.redes-container img{
+    width: 30px;
+}
+.rs{
+    min-width: 130px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+.rs:hover{
+    transform: scale(1.03);
+    border: 3px solid #2e270b;
+}
+.facebook{
+    background-color: #3B5998;
+}
+.instagram{
+    background:linear-gradient(to bottom,#3E5897, #BF4690, #F9B265)
+}
+.tiktok{
+    background-color: #000000;
+}
+.whatsapp{
+    background-color: #1ACF5D;
+}
+.rs-logo{
+    margin-bottom: 12px;
+}
+.descripcion{
+    display: flex;
+    flex-direction: column;
+    color: var(--blanco);
+    font-weight: 600;
+}
+.descripcion span:nth-child(1){
+    font-size: .8rem;
+}
+.descripcion span:nth-child(2){
+    font-size: .95rem;
+}
 /*FOOTER*/
 
 .copy{

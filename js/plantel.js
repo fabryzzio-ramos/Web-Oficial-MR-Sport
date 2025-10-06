@@ -19,8 +19,8 @@ const jugadores = [
     { nombre: "Raúl Jiménez", posicion: "delantero", numero: 10, imagen: "img/jugador-rashford.webp" },
 
     //Cuerpo Técnico
-    { nombre: "Carlos Hernández", posicion: "cuerpo-tecnico", numero: null, imagen: "img/jugador-messi.webp" },
-    { nombre: "Miguel Ramírez", posicion: "cuerpo-tecnico", numero: null, imagen: "img/jugador-messi.webp" },
+    { nombre: "Carlos Hernández", posicion: "entrenador", numero: "", imagen: "img/jugador-messi.webp" },
+    { nombre: "Miguel Ramírez", posicion: "entrenador", numero: "", imagen: "img/jugador-messi.webp" },
 ];
 
 function mostrarPorPosicion(posicion) {
@@ -38,13 +38,17 @@ function mostrarPorPosicion(posicion) {
         contenedor.innerHTML += `
         <div class="jugador">
             <img src="${j.imagen}" alt="${j.nombre}">
-            <h4>${j.nombre}</h4>
-            <p>${j.posicion.charAt(0).toUpperCase() + j.posicion.slice(1)}</p>
+            <span class="dorsal">${j.numero}</span>
+            <div class="info">
+                <h4>${j.nombre}</h4>
+                <p>${j.posicion.charAt(0).toUpperCase() + j.posicion.slice(1)}</p>
+                <span class="numero">#${j.numero}</span>
+            </div>
         </div>
         `;
     });
 }
 // Mostrar todos los jugadores al cargar la página
-["portero", "defensor", "centrocampista", "delantero", "cuerpo-tecnico"].forEach(pos => {
+["portero", "defensor", "centrocampista", "delantero", "entrenador"].forEach(pos => {
     mostrarPorPosicion(pos);
 });
