@@ -1,0 +1,313 @@
+:root{
+    --rojo-principal: #C62828;
+    --rojo-oscuro: #8E0000;
+    --negro: #000000;
+    --blanco: #ffffff;
+    --gris: #eeeeee;
+    --gris-claro: #f5f5f5;
+    --amarillo: #ffd600;
+}
+
+section[id] {
+    scroll-margin-top: 110px;
+}
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* General */
+img{
+    max-width: 100%;
+    height: auto;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+    color: var(--negro);
+    overflow-x: hidden;
+    line-height: 1.5;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+
+/* NAV */
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 80px;
+    background-color: var(--rojo-principal);
+    color: var(--blanco);
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+.nav-second-container{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+.social-icons{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 5px 10px;
+}
+.nav-second{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;  
+}
+.background-social{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 5px 0;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+.background-social:hover{
+    transform: translateY(-3px) scale(1.05);
+}
+.background-social:nth-child(1):hover{
+    background-color: #3B5998;
+}
+.background-social:nth-child(2):hover{
+    background-color: #9D7144;
+}
+.background-social:nth-child(3):hover{
+    background-color: #000000;
+}
+.background-social:nth-child(4):hover{
+    background-color: #1ACF5D;
+}
+.social-phone{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    gap: 10px;
+    height: 15px;
+    font-size: 17px;
+}
+.nav-second .contenido{
+    color: var(--blanco);
+    font-weight: 600;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.nav-second .contenido:hover{
+    color: var(--negro);
+    text-decoration: underline;
+}
+.nav-second .contenido img{
+    justify-content: center;
+}
+.nav-second .contenido span{
+    align-items: center;
+}
+
+/* Logo */
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+.logo .texto{
+    color: var(--blanco);
+    display: flex;
+    flex-direction: column;
+}
+.logo .texto .nombre{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+.logo img{
+    width: 50px;
+}
+
+/*HAMBURGUER*/
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 200; /* para que quede encima del menú */
+}
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+/* Estados animados cuando el menú está abierto */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Contenido */
+.contenedor{
+    width: 90%;
+    max-width: 1200px;
+    padding: 50px 0;
+    margin: auto;
+}
+.titulo-seccion{
+    margin: 100px 0 50px;
+}
+.titulo-seccion{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--rojo-oscuro);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 100px 0 40px;
+    position: relative;
+}
+
+.titulo-seccion::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(to right, #e53935, #000);
+    border-radius: 5px;
+}
+/* Contenido del nav */
+.section-navegation{
+    width: 100%;
+    display: flex;
+    scroll-behavior: smooth;
+    align-items: center;
+    justify-content: center;
+}
+.text-container{
+    width: 140px;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    background-color: #F8F8F8;
+    border: 1px solid #EFEFEF;
+    color: #727272;
+    padding: 10px 40px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+.text-container:hover{
+    background-color: var(--blanco);
+    color: var(--negro);
+}
+.text-container span:nth-child(1){
+    font-size: 10px;
+    font-weight: 600;
+}
+.text-container span:nth-child(2){
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Estilos para el calendario */
+
+.grid-partidos {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding: 10px 0;
+}
+.mes{
+    width: 100%;
+    padding: 30px 0 0;
+}
+.partido {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+}
+.fecha {
+    font-weight: 600;
+    width: 150px;
+}
+.torneo{
+    width: 120px;
+    display: flex;
+    justify-content: center;
+}
+.torneo img {
+    width: 80px;
+}
+.jornada{
+    width: 100px;
+    font-weight: bold;
+    font-size: 11px;
+}
+.encuentro{
+    width: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    
+}
+.encuentro img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.versus{
+    font-size: 16px;
+    font-weight: 700;
+}
+.local, .visitante {
+    display: flex;
+    width: 278px;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.local, .visitante span{
+    font-size: 20px;
+    font-weight: bold;
+}
+.local{
+    display: flex;
+    justify-content: end;
+}

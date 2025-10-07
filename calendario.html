@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MR Sport | Noticias Deportivas</title>
+    <title>MR Sport | Calendario</title>
 
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
-
+    
     <!-- Google Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
     <!-- CSS-->
-    <link rel="stylesheet" href="/css/noticias.css">
+    <link rel="stylesheet" href="/css/calendario.css">
+
 </head>
 <body>
     <header class="header">
@@ -81,60 +82,86 @@
     </header>
 
     <main class="contenedor">
-        <h2 class="titulo-seccion">Últimas Noticias</h2>
-
-        <div id="noticias" class="grid-noticias"></div>
-
-        <div class="ver-mas-container">
-            <button id="btnVerMas">Ver más noticias</button>
+        <h2 class="titulo-seccion">Calendario del Primer Equipo</h2>
+        <div class="section-navegation">
+            <a class="text-container" href="#2025-enero">
+                <span>2025</span>
+                <span>Enero</span>
+            </a>
+            <a class="text-container" href="#2025-febrero">
+                <span>2025</span>
+                <span>Febrero</span>
+            </a>
+            <a class="text-container" href="#2025-marzo">
+                <span>2025</span>
+                <span>Marzo</span>
+            </a>
+            <a class="text-container" href="#2025-abril">
+                <span>2025</span>
+                <span>Abril</span>
+            </a>
+            <a class="text-container" href="#2025-mayo">
+                <span>2025</span>
+                <span>Mayo</span>
+            </a>
+            <a class="text-container" href="#2025-junio">
+                <span>2025</span>
+                <span>Junio</span>
+            </a>
+            <a class="text-container" href="#2025-julio">
+                <span>2025</span>
+                <span>Julio</span>
+            </a>
+            <a class="text-container" href="#2025-agosto">
+                <span>2025</span>
+                <span>Agosto</span>
+            </a>
         </div>
+
+        <section class="contenido">
+            <section id="2025-enero" class="mes">
+                <h3>Enero 2025</h3>
+                <div class="grid-partidos"></div>
+            </section>
+
+            <section id="2025-febrero" class="mes">
+                <h3>Febrero 2025</h3>
+                <div class="grid-partidos"></div>
+            </section>
+
+            <section id="2025-marzo" class="mes">
+                <h3>Marzo 2025</h3>
+                <div class="grid-partidos"></div>
+            </section>
+
+            <section id="2025-abril" class="mes">
+                <h3>Abril 2025</h3>
+                <div class="grid-partidos"></div>
+            </section>
+
+            <section id="2025-mayo" class="mes">
+                <h3>Mayo 2025</h3>
+                <div class="grid-partidos"></div>
+            </section>
+
+            <section id="2025-junio" class="mes">
+                <h3>Junio 2025</h3>
+                <div class="grid-partidos"></div>
+            </section>
+
+            <section id="2025-julio" class="mes">
+                <h3>Julio 2025</h3>
+                <div class="grid-partidos"></div>
+            </section>
+
+            <section id="2025-agosto" class="mes">
+                <h3>Agosto 2025</h3>
+                <div class="grid-partidos"></div>
+            </section>
+
+        </section>
     </main>
-    <section class="redes" id="redes">
-            <h3 class="redes-h3">Sigue a MR Sport en las redes sociales</h3>
-            <!-- Redes -->
-            <div class="redes-container">
-                <a href="https://www.facebook.com/people/Club-Deportivo-San-Marcos/61556221790255/?mibextid=ZbWKwL" class="rs facebook" target="_blank" >
-                    <header class="rs-logo">
-                        <img src="img/icon-facebook.webp" alt="Logo de facebook">
-                    </header>
-                    <footer class="descripcion">
-                        <span>MR Sport</span>
-                        <span>@mrsport</span>
-                    </footer>
-                </a>
-                <a href="https://www.instagram.com/deportivo.sanmarcos?utm_source=ig_web_button_share_sheet&igsh=ZnBkdGJkYWdqdHZs" class="rs instagram" target="_blank">
-                    <header class="rs-logo">
-                        <img src="img/icon-instagram.webp" alt="Logo de instagram">
-                    </header>
-                    <footer class="descripcion">
-                        <span>MR Sport</span>
-                        <span>@mrsport</span>
-                    </footer>
-                </a>
-                <a href="#" class="rs tiktok" target="_blank">
-                    <header class="rs-logo">
-                        <img src="img/icon-tiktok.webp" alt="Logo de tiktok">
-                    </header>
-                    <footer class="descripcion">
-                        <span>MR Sport</span>
-                        <span>Tik Tok</span>
-                    </footer>
-                </a>
-                <a href="https://wa.link/b0b8cp" class="rs whatsapp" target="_blank">
-                    <header class="rs-logo">
-                        <img src="img/icon-whatsapp.webp" alt="Logo de whatsapp">
-                    </header>
-                    <footer class="descripcion">
-                        <span>MR Sport</span>
-                        <span>Whatsapp</span>
-                    </footer>
-                </a>
-            </div>
-    </section>
-    <footer class="copy">
-            <p>&copy; 2025 Club MR Sport - Todos los derechos reservados</p>
-    </footer>
-    
-    <script src="js/noticias.js"></script>
+
+    <script src="js/calendario.js"></script>
 </body>
 </html>
