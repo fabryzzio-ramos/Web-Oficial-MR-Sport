@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - MR Sport</title>
+    <style>
+        body { background:#111; color:#fff; font-family:Arial; padding:20px; }
+        h1 { color:#00ff90; }
+        form { display:grid; gap:10px; max-width:400px; margin-bottom:30px; }
+        input, button { padding:8px; border:none; border-radius:6px; }
+        button { background:#00ff90; color:#000; font-weight:bold; cursor:pointer; }
+        .partido { background:#222; padding:10px; border-radius:8px; margin:6px 0; }
+    </style>
+</head>
+<body>
+    <h1>Panel de Administración</h1>
+
+    <form id="formPartido">
+        <input type="text" id="mes" placeholder="Mes (ej: 2025-enero)" required>
+        <input type="text" id="fecha" placeholder="Fecha (ej: Sab 4 ENE)" required>
+        <input type="text" id="torneo" placeholder="Torneo (ej: Champions League)" required>
+        <input type="text" id="jornada" placeholder="Jornada (ej: Jornada 1)" required>
+        <input type="text" id="local" placeholder="Equipo local" required>
+        <input type="text" id="visitante" placeholder="Equipo visitante" required>
+        <button type="submit">Agregar partido</button>
+    </form>
+
+    <h2>Partidos actuales</h2>
+    <div id="listaPartidos"></div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+
+        // Configura tu Firebase aquí 👇
+        const firebaseConfig = {
+        apiKey: "AIzaSyDQ_hSR8_jdBGRbjIj8SlJN4ClqWBYxAiM",
+        authDomain: "mr-sport-87de8.firebaseapp.com",
+        projectId: "mr-sport-87de8",
+        storageBucket: "mr-sport-87de8.firebasestorage.app",
+        messagingSenderId: "463765364811",
+        appId: "1:463765364811:web:6a848bc771e5d5eccaedce",
+        measurementId: "G-PRSNCD2XFD"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const form = document.getElementById("formPartido");
+        const lista = document.getElementById("listaPartidos");
+
+        // Cargar partidos existentes
+        async function cargarPartidos() {
+        lista.innerHTML = "";
+        const querySnapshot = await getDocs(collection(db, "partidos"));
+        querySnapshot.forEach((docSnap) => {
+            const p = docSnap.data();
+            const div = document.createElement("div");
+            div.classList.add("partido");
+            div.innerHTML = `
+            <b>${p.fecha}</b> - ${p.local} vs ${p.visitante} <br>
+            ${p.torneo} (${p.jornada})<br>
+            <button data-id="${docSnap.id}">Eliminar</button>
+            `;
+            div.querySelector("button").addEventListener("click", async () => {
+            await deleteDoc(doc(db, "partidos", docSnap.id));
+            cargarPartidos();
+            });
+            lista.appendChild(div);
+        });
+        }
+
+        // Agregar partido nuevo
+        form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const nuevo = {
+            mes: form.mes.value,
+            fecha: form.fecha.value,
+            torneo: form.torneo.value,
+            jornada: form.jornada.value,
+            local: form.local.value,
+            visitante: form.visitante.value
+        };
+        await addDoc(collection(db, "partidos"), nuevo);
+        form.reset();
+        cargarPartidos();
+        });
+
+        cargarPartidos();
+    </script>
+</body>
+</html>
