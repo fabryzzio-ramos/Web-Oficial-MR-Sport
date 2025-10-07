@@ -34,7 +34,10 @@ a{
 ul{
     list-style: none;
 }
-
+hr { 
+    margin:40px 0;
+    border:2px solid var(--rojo-oscuro); 
+}
 /* NAV */
 .header{
     display: flex;
