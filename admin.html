@@ -12,14 +12,29 @@
         button { background:#00ff90; color:#000; font-weight:bold; cursor:pointer; }
         .partido, .jugador { background:#222; padding:10px; border-radius:8px; margin:6px 0; }
         hr { margin:40px 0; border:1px solid #333; }
+        #panel { display:none; }
+        #logoutBtn { background:red; color:white; margin-bottom:20px; }
     </style>
 </head>
 <body>
-    <h1>Panel de Administración MR Sport</h1>
+    <h1>Panel de Administración - MR Sport</h1>
 
-    <!-- 🔹 FORMULARIO DE PARTIDOS -->
-    <h2>Agregar Partido</h2>
-    <form id="formPartido">
+    <!-- 🔐 LOGIN -->
+    <div id="login">
+        <h2>Iniciar sesión</h2>
+        <form id="loginForm">
+        <input type="email" id="email" placeholder="Correo" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <!-- 🧠 PANEL ADMIN -->
+    <div id="panel">
+        <button id="logoutBtn">Cerrar sesión</button>
+
+        <h2>Agregar Partido</h2>
+        <form id="formPartido">
         <input type="text" id="mes" placeholder="Mes (ej: 2025-enero)" required>
         <input type="text" id="fecha" placeholder="Fecha (ej: Sab 4 ENE)" required>
         <input type="text" id="torneo" placeholder="Torneo (ej: Champions League)" required>
@@ -27,25 +42,31 @@
         <input type="text" id="local" placeholder="Equipo local" required>
         <input type="text" id="visitante" placeholder="Equipo visitante" required>
         <button type="submit">Agregar partido</button>
-    </form>
-    <div id="listaPartidos"></div>
+        </form>
+        <div id="listaPartidos"></div>
 
-    <hr>
+        <hr>
 
-    <!-- 🔹 FORMULARIO DE JUGADORES -->
-    <h2>Agregar Jugador</h2>
-    <form id="formJugador">
+        <h2>Agregar Jugador</h2>
+        <form id="formJugador">
         <input type="text" id="nombre" placeholder="Nombre del jugador" required>
         <input type="number" id="numero" placeholder="Número" required>
         <input type="text" id="posicion" placeholder="Posición (ej: Defensa)" required>
         <button type="submit">Agregar jugador</button>
-    </form>
-    <div id="listaJugadores"></div>
+        </form>
+        <div id="listaJugadores"></div>
+    </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+        import { 
+        getFirestore, collection, addDoc, getDocs, deleteDoc, doc 
+        } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+        import { 
+        getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
 
+        // ⚙️ Tu configuración de Firebase
         const firebaseConfig = {
         apiKey: "AIzaSyDQ_hSR8_jdBGRbjIj8SlJN4ClqWBYxAiM",
         authDomain: "mr-sport-87de8.firebaseapp.com",
@@ -58,8 +79,46 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+        const auth = getAuth(app);
 
-        // 🔸 PARTIDOS
+        const loginDiv = document.getElementById("login");
+        const panelDiv = document.getElementById("panel");
+        const loginForm = document.getElementById("loginForm");
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        // 🔐 LOGIN
+        loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+        } catch (error) {
+            alert("❌ Error al iniciar sesión: " + error.message);
+        }
+        });
+
+        // 🔒 LOGOUT
+        logoutBtn.addEventListener("click", async () => {
+        await signOut(auth);
+        });
+
+        // 👀 MONITOREAR SESIÓN
+        onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Si está logueado
+            loginDiv.style.display = "none";
+            panelDiv.style.display = "block";
+            cargarPartidos();
+            cargarJugadores();
+        } else {
+            // Si no está logueado
+            loginDiv.style.display = "block";
+            panelDiv.style.display = "none";
+        }
+        });
+
+        // ⚽ PARTIDOS
         const formPartido = document.getElementById("formPartido");
         const listaPartidos = document.getElementById("listaPartidos");
 
@@ -99,7 +158,7 @@
         cargarPartidos();
         });
 
-        // 🔸 JUGADORES
+        // 🧍‍♂️ JUGADORES
         const formJugador = document.getElementById("formJugador");
         const listaJugadores = document.getElementById("listaJugadores");
 
@@ -129,16 +188,12 @@
         const nuevoJugador = {
             nombre: formJugador.nombre.value,
             numero: parseInt(formJugador.numero.value),
-            posicion: formJugador.posicion.value,
+            posicion: formJugador.posicion.value
         };
         await addDoc(collection(db, "jugadores"), nuevoJugador);
         formJugador.reset();
         cargarJugadores();
         });
-
-        // Inicializar
-        cargarPartidos();
-        cargarJugadores();
     </script>
 </body>
 </html>
