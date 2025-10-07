@@ -1,43 +1,57 @@
-const jugadores = [
 
-    //Porteros
-    { nombre: "Joan García", posicion: "portero", numero: 1, imagen: "img/jugador-joan_garcia.webp" },
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
 
-    //Defensores
-    { nombre: "Diego González", posicion: "defensor", numero: 2, imagen: "img/jugador-neymar.webp" },
-    { nombre: "Carlos López", posicion: "defensor", numero: 3, imagen: "img/jugador-neymar.webp" },
-    { nombre: "Miguel Sánchez", posicion: "defensor", numero: 4, imagen: "img/jugador-neymar.webp" },
+// 🔧 Configura con tus credenciales (debe ser el MISMO proyecto que el panel admin)
+const firebaseConfig = {
+    apiKey: "AIzaSyDQ_hSR8_jdBGRbjIj8SlJN4ClqWBYxAiM",
+    authDomain: "mr-sport-87de8.firebaseapp.com",
+    projectId: "mr-sport-87de8",
+    storageBucket: "mr-sport-87de8.firebasestorage.app",
+    messagingSenderId: "463765364811",
+    appId: "1:463765364811:web:6a848bc771e5d5eccaedce",
+    measurementId: "G-PRSNCD2XFD"
+};
 
-    //Mediocampistas
-    { nombre: "Luis Martínez", posicion: "centrocampista", numero: 5, imagen: "img/jugador-yamal.webp" },
-    { nombre: "Javier Rodríguez", posicion: "centrocampista", numero: 6, imagen: "img/jugador-yamal.webp" },
-    { nombre: "Andrés Pérez", posicion: "centrocampista", numero: 7, imagen: "img/jugador-yamal.webp" },
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-    //Delanteros
-    { nombre: "Fernando Torres", posicion: "delantero", numero: 8, imagen: "img/jugador-rashford.webp" },
-    { nombre: "Sergio Gómez", posicion: "delantero", numero: 9, imagen: "img/jugador-rashford.webp" },
-    { nombre: "Raúl Jiménez", posicion: "delantero", numero: 10, imagen: "img/jugador-rashford.webp" },
+// ⚽ Imagen de Jugadores (agrega los que tengas)
+const imagenJugadores = {
+    "Joan Garcia": "img/jugador-joan_garcia.webp",
+    "Messi": "img/jugador-messi.webp",
+    "Neymar": "img/jugador-neymar.webp",
+    "Lamine Yamal": "img/jugador-yamal.webp",
+    "Rashford": "img/jugador-rashford.webp"
+};
 
-    //Cuerpo Técnico
-    { nombre: "Carlos Hernández", posicion: "entrenador", numero: "", imagen: "img/jugador-messi.webp" },
-    { nombre: "Miguel Ramírez", posicion: "entrenador", numero: "", imagen: "img/jugador-messi.webp" },
-];
+// 📸 Imagen por defecto si no hay coincidencia
+const imagenPorDefecto = "img/jugador-default.webp";
 
-function mostrarPorPosicion(posicion) {
-    const seccion = document.getElementById(posicion);
-    if (!seccion) return;
+// 📅 Función principal
+async function cargarJugadores() {
+try {
+    const snapshot = await getDocs(collection(db, "jugadores"));
 
-    const contenedor = seccion.querySelector(".grid-jugadores");
-    // vacía el contenedor antes de volver a cargarlo
-    contenedor.innerHTML = "";
+    // Limpia todos los contenedores
+    document.querySelectorAll(".grid-jugadores").forEach(div => div.innerHTML = "");
+    
+    snapshot.forEach(docSnap => {
+        const j = docSnap.data();
+        const posicion = j.posicion.toLowerCase();
 
-    //filtra los jugadores por posición
-    const filtrados = jugadores.filter(j => j.posicion === posicion);
+    // Convierte en plural para coincidir con las clases de HTML (ej: "defensa" → "defensas")
+        const clase = posicion.endsWith("s") ? posicion : posicion + "s";
 
-    filtrados.forEach(j => {
+        const contenedor = document.querySelector(`.grid-jugadores.${clase}`);
+
+        // 📷 Buscar imagen del jugador en el objeto
+        const imagenSrc = imagenJugadores[j.nombre] || imagenPorDefecto;
+        
+        if (contenedor) {
         contenedor.innerHTML += `
         <div class="jugador">
-            <img src="${j.imagen}" alt="${j.nombre}">
+            <img src="${imagenSrc}" alt="${j.nombre}">
             <span class="dorsal">${j.numero}</span>
             <div class="info">
                 <h4>${j.nombre}</h4>
@@ -46,18 +60,10 @@ function mostrarPorPosicion(posicion) {
             </div>
         </div>
         `;
+        }
     });
+} catch (error) {
+    console.error("Error al cargar jugadores:", error);
+    }
 }
-// Mostrar todos los jugadores al cargar la página
-["portero", "defensor", "centrocampista", "delantero", "entrenador"].forEach(pos => {
-    mostrarPorPosicion(pos);
-});
-
-// Código para el menú hamburguesa
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('show');
-});
+document.addEventListener("DOMContentLoaded", cargarJugadores);

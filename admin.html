@@ -6,16 +6,19 @@
     <title>Panel de Administración - MR Sport</title>
     <style>
         body { background:#111; color:#fff; font-family:Arial; padding:20px; }
-        h1 { color:#00ff90; }
+        h1, h2 { color:#00ff90; }
         form { display:grid; gap:10px; max-width:400px; margin-bottom:30px; }
         input, button { padding:8px; border:none; border-radius:6px; }
         button { background:#00ff90; color:#000; font-weight:bold; cursor:pointer; }
-        .partido { background:#222; padding:10px; border-radius:8px; margin:6px 0; }
+        .partido, .jugador { background:#222; padding:10px; border-radius:8px; margin:6px 0; }
+        hr { margin:40px 0; border:1px solid #333; }
     </style>
 </head>
 <body>
-    <h1>Panel de Administración</h1>
+    <h1>Panel de Administración MR Sport</h1>
 
+    <!-- 🔹 FORMULARIO DE PARTIDOS -->
+    <h2>Agregar Partido</h2>
     <form id="formPartido">
         <input type="text" id="mes" placeholder="Mes (ej: 2025-enero)" required>
         <input type="text" id="fecha" placeholder="Fecha (ej: Sab 4 ENE)" required>
@@ -25,15 +28,24 @@
         <input type="text" id="visitante" placeholder="Equipo visitante" required>
         <button type="submit">Agregar partido</button>
     </form>
-
-    <h2>Partidos actuales</h2>
     <div id="listaPartidos"></div>
+
+    <hr>
+
+    <!-- 🔹 FORMULARIO DE JUGADORES -->
+    <h2>Agregar Jugador</h2>
+    <form id="formJugador">
+        <input type="text" id="nombre" placeholder="Nombre del jugador" required>
+        <input type="number" id="numero" placeholder="Número" required>
+        <input type="text" id="posicion" placeholder="Posición (ej: Defensa)" required>
+        <button type="submit">Agregar jugador</button>
+    </form>
+    <div id="listaJugadores"></div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
 
-        // Configura tu Firebase aquí 👇
         const firebaseConfig = {
         apiKey: "AIzaSyDQ_hSR8_jdBGRbjIj8SlJN4ClqWBYxAiM",
         authDomain: "mr-sport-87de8.firebaseapp.com",
@@ -47,47 +59,87 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        const form = document.getElementById("formPartido");
-        const lista = document.getElementById("listaPartidos");
+        // 🔸 PARTIDOS
+        const formPartido = document.getElementById("formPartido");
+        const listaPartidos = document.getElementById("listaPartidos");
 
-        // Cargar partidos existentes
         async function cargarPartidos() {
-        lista.innerHTML = "";
+        listaPartidos.innerHTML = "";
         const querySnapshot = await getDocs(collection(db, "partidos"));
         querySnapshot.forEach((docSnap) => {
             const p = docSnap.data();
             const div = document.createElement("div");
             div.classList.add("partido");
             div.innerHTML = `
-            <b>${p.fecha}</b> - ${p.local} vs ${p.visitante} <br>
-            ${p.torneo} (${p.jornada})<br>
-            <button data-id="${docSnap.id}">Eliminar</button>
+            <b>${p.fecha}</b> - ${p.local} vs ${p.visitante} (${p.torneo})<br>
+            <button data-id="${docSnap.id}" class="delPartido">Eliminar</button>
             `;
-            div.querySelector("button").addEventListener("click", async () => {
-            await deleteDoc(doc(db, "partidos", docSnap.id));
+            listaPartidos.appendChild(div);
+        });
+        document.querySelectorAll(".delPartido").forEach(btn => {
+            btn.addEventListener("click", async () => {
+            await deleteDoc(doc(db, "partidos", btn.dataset.id));
             cargarPartidos();
             });
-            lista.appendChild(div);
         });
         }
 
-        // Agregar partido nuevo
-        form.addEventListener("submit", async (e) => {
+        formPartido.addEventListener("submit", async (e) => {
         e.preventDefault();
         const nuevo = {
-            mes: form.mes.value,
-            fecha: form.fecha.value,
-            torneo: form.torneo.value,
-            jornada: form.jornada.value,
-            local: form.local.value,
-            visitante: form.visitante.value
+            mes: formPartido.mes.value,
+            fecha: formPartido.fecha.value,
+            torneo: formPartido.torneo.value,
+            jornada: formPartido.jornada.value,
+            local: formPartido.local.value,
+            visitante: formPartido.visitante.value
         };
         await addDoc(collection(db, "partidos"), nuevo);
-        form.reset();
+        formPartido.reset();
         cargarPartidos();
         });
 
+        // 🔸 JUGADORES
+        const formJugador = document.getElementById("formJugador");
+        const listaJugadores = document.getElementById("listaJugadores");
+
+        async function cargarJugadores() {
+        listaJugadores.innerHTML = "";
+        const querySnapshot = await getDocs(collection(db, "jugadores"));
+        querySnapshot.forEach((docSnap) => {
+            const j = docSnap.data();
+            const div = document.createElement("div");
+            div.classList.add("jugador");
+            div.innerHTML = `
+            <b>#${j.numero}</b> ${j.nombre} - ${j.posicion}<br>
+            <button data-id="${docSnap.id}" class="delJugador">Eliminar</button>
+            `;
+            listaJugadores.appendChild(div);
+        });
+        document.querySelectorAll(".delJugador").forEach(btn => {
+            btn.addEventListener("click", async () => {
+            await deleteDoc(doc(db, "jugadores", btn.dataset.id));
+            cargarJugadores();
+            });
+        });
+        }
+
+        formJugador.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const nuevoJugador = {
+            nombre: formJugador.nombre.value,
+            numero: parseInt(formJugador.numero.value),
+            posicion: formJugador.posicion.value,
+        };
+        await addDoc(collection(db, "jugadores"), nuevoJugador);
+        formJugador.reset();
+        cargarJugadores();
+        });
+
+        // Inicializar
         cargarPartidos();
+        cargarJugadores();
     </script>
 </body>
 </html>
+
