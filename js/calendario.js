@@ -61,11 +61,11 @@ function mostrarPartidos(partidos) {
 
         contenedor.innerHTML += `
         <div class="partido">
-            <div class="fecha"><span>${p.fecha}</span></div>
+            <div class="fecha"><span>${p.fecha}</span></div><hr class="separador">
             <div class="torneo">
                 <img src="${logoTorneo}" alt="${p.torneo}">
-            </div>
-            <div class="jornada"><span>${p.jornada}</span></div>
+            </div><hr class="separador">
+            <div class="jornada"><span>${p.jornada}</span></div><hr class="separador">
             <div class="encuentro">
                 <div class="local">
                     <span>${p.local}</span>
@@ -78,6 +78,7 @@ function mostrarPartidos(partidos) {
                 </div>
             </div>
         </div>
+        <hr class="hr">
         `;
         });
     });
