@@ -168,7 +168,7 @@ a{
 .menu-item:hover::before{
     width: 100%;
 }
-/*====== SUBMENU =====*/
+/*=== SUBMENU GENERAL ===*/
 .submenu{
     background: white;
 }
@@ -182,10 +182,57 @@ a{
     width: 200px;
     display: flex;
     flex-direction: column;
-    border: 2px solid red;
+}
+.columns img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+.subcategoria{
+    list-style: none;
+}
+.subcategoria li{
+    display: flex;
+    margin: 5px 0;
+}
+.subcategoria a{
+    font-size: 16px;
+    font-weight: 550;
+    color: var(--negro);
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+.subcategoria a:hover{
+    color: #f80000;
+    background-color: #ffc7c7;
+}
+.columns hr{
+    margin: 10px 0;
+    border:1px solid #EDEFF2;
+}
+/*====== SUBMENU EQUIPACIONES =====*/
+
+
+.submenu-equipaciones{
+    padding: 30px 0;
+    display: none;
 }
 
-.columns hr{
-    margin: 5px 0;
-    border:1px solid red
+/*====== SUBMENU ENTRENAMIENTO =====*/
+.submenu-entrenamiento{
+    padding: 30px 0;
+    display: none;
+}
+
+/*====== SUBMENU MODA =====*/
+.submenu-moda{
+    padding: 30px 0;
+    display: none;
+}
+
+/*====== SUBMENU ACCESORIOS =====*/
+.submenu-accesorios{
+    padding: 30px 0;
+    display: none;
 }
